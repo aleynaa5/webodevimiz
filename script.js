@@ -1,40 +1,67 @@
-const minimum =1;
-const maksimum =100;
-const answer = (Math.random()* (maksimum - minimum))
 
-console.log(answer);
+function toggleSwitch() {
+    const toggleSwitch = document.getElementById("toggle-switch");
+    const toggleLabel = document.getElementById("toggle-label");
+
+    toggleSwitch.classList.toggle("active");
+
+    if (toggleSwitch.classList.contains("active")) {
+        toggleLabel.textContent = "Çözülmüş Soru";
+    } else {
+        toggleLabel.textContent = "Çözülmemiş Soru";
+    }
+}
 
 
 
 
 
+function toggleBulkOrder() {
+    const bulkOrderButton = document.getElementById("bulk-order-button");
+
+    if (bulkOrderButton.classList.contains("active")) {
+        bulkOrderButton.classList.remove("active");
+        bulkOrderButton.textContent = "Toplu Sipariş: Kapalı";
+    } else {
+        bulkOrderButton.classList.add("active");
+        bulkOrderButton.textContent = "Toplu Sipariş: Açık";
+    }
+}
+
+function toggleView(view) {
+    const SinifView = document.getElementById("3.sinif");
+    const SınıfView = document.getElementById("4.sinif");
+
+    if (view === "yorumlar") {
+        SinifView.style.display = "flex";
+        SinifView.style.display = "none";
+    } else {
+        SinifView.style.display = "none";
+        SinifView.style.display = "flex";
+    }
+}
+
+function performSearch() {
+    const searchInput = document.getElementById("search-input").value;
+    alert("Arama yapılıyor: " + searchInput);
+}
+
+
+// Sayfayı gösteren fonksiyon
+function showPage(page) {
+    // Öncelikle tüm sayfaları gizleriz
+    const pages = document.querySelectorAll('.main-content');
+    pages.forEach(function (pageElement) {
+        pageElement.style.display = 'none';
+    });
+
+    // Gösterilmesi gereken sayfayı gösteririz
+    const pageToShow = document.getElementById(page);
+    if (pageToShow) {
+        pageToShow.style.display = 'flex'; // Sayfayı görünür yap
+    }
 
 
 
-
-
-
-//console.log("Hello");
-
-//window.alert("sa");
-// window.alert("as");
-
-// Comments /* */
-
-//document.getElementById('myP').innerText = "Arda Aslan";   
-//document.getElementById("myP").style.color = "red";
-//document.getElementById("myH1").style.color = "#cccc00";
-
-//let x;
-//x = 100;
-//let myname = "Arda"
-
-//console.log(x);
-//console.log(typeof x);
-//console.log('Benim adım ${x}');
-//console.log($'Benim adim {name}')
-
-//document.getElementById("p1").textContent = myname;
-//document.getElementById("p2").textContent = x;
-//document.getElementById("p3").textContent = myname;
+}
 
