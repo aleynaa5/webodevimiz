@@ -1,22 +1,157 @@
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<!-- Sayfanın karakter setini belirtir. Türkçe karakterlerin doğru görünmesini sağlar. -->
+	<meta charset="UTF-8">
+	<!-- Sayfa mobil cihazlarda düzgün görüntülensin diye viewport ayarı yapılır -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Sayfanın başlığı, tarayıcı sekmesinde görünen metni belirler -->
+	<title>Soru çözüm sitesi</title>
+	<!-- CSS dosyasını bağlar, stil ayarlarını içerir -->
+
+	
+	<link rel="stylesheet" href="~/css/Questions.css" asp-append-version="true" />
+	
+</head>
+<body>
+
+	<!-- Header (Başlık) bölümü -->
+	<div class="header">
+		<div class="ikon">
+			<img src="~/img/G-Photoroom.png" alt="Bozok Portal Icon" class="ikon-img">
+			Bozok Portal
+		</div>
+
+
+		@* <!-- Soru arama alanı -->
+		<div class="soru-arama">
+		<!-- Arama kutusu -->
+		<input type="search" placeholder="Soru" id="search-input">
+		<!-- Arama butonu, tıklanınca performSearch fonksiyonu çalışacak -->
+		<button class="search-button" onclick="performSearch()">&#128269;</button>
+		</div>  *@
+
+
+
+		@* <!-- Restoran durumu değiştirilebilen toggle switch (açma/kapama anahtarı) -->
+		<div class="toggle-container" onclick="toggleSwitch()">
+			<span class="toggle-label" id="toggle-label">Çıkmış Soru</span>
+			<!-- Anahtarı temsil eden bölüm -->
+			<div class="toggle-switch" id="toggle-switch"></div>
+		</div> *@
+	</div>
+
+
+	<div class="container">
+		 @* <div class="sidebar">
+
+			<div class="AcilirMenu">
+				<button class="Buton">1.Sınıf</button>
+			</div>
+
+			<div class="AcilirMenu">
+				<button class="Buton">2.Sınıf</button>
+			</div>
+
+			<div class="AcilirMenu">
+				<button class="Buton">3.Sınıf</button>
+			</div>
+
+			<div class="AcilirMenu">
+				<button class="Buton">4.Sınıf</button>
+			</div> *@
+		</div> 
+		<div class="main-content" id="soru" >
+			@RenderBody()
+		</div>
+	</div>
+	<!-- Footer Bölümü -->
+	<footer class="footer">
+		<div class="footer-container">
+			<p>&copy; 2024 . Tüm Hakları Saklıdır.</p>
+			<div class="social-links">
+				<a href="#" target="_blank">Facebook</a>
+				<a href="#" target="_blank">Twitter</a>
+				<a href="#" target="_blank">Instagram</a>
+			</div>
+		</div>
+	</footer>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>javascript</title>
-    <script> </script>
-    <link rel="stylesheet" href="styles.css">
-    
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - WEB</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/giris.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/WEB.styles.css" asp-append-version="true" />
 </head>
 <body>
-   <!--<h1 id="myH1">Hello Javascript</h1>
-    <p id="myP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam corrupti natus ab quos ex.</p>
- 
 
+	<div class="container">
+		<main role="main" class="pb-3">
+			<div class="main">
+				<div class="left-section">
+					<div class="logo">
+						<img src="~/img/G-Photoroom.png" alt="BozokPortal Logosu">
+					</div>
+				</div>
+				<div class="right-section">
+					@RenderBody()
+				</div>
+			</div>
+		</main>
+	</div>
 
-    <p id="p1">a</p>
-    <p id="p2">b</p>
-    <p id="p3">c</p> --> 
-    <script src="script.js"></script> 
+	<footer>
+		<div class="footer-content">
+			<p>&copy; 2024 Bozok Portal. Tüm Hakları Saklıdır.</p>
+			<p><a href="#">Gizlilik Politikası</a> | <a href="#">Kullanım Şartları</a></p>
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+   <p>
+        <strong>Hata Açıklaması:</strong> <code>@Model.Description</code>
+   </p>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
 </body>
 </html>
